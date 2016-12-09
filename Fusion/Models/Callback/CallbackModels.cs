@@ -421,14 +421,14 @@ namespace Fusion.Models.Callback
 
             //фио гостя
             [Required(ErrorMessage = "Введите ФИО гостя")]//добавить латиницу, проверить регулярки
-            [RegularExpression(@"([а-яА-Я]+\s[а-яА-Я]+\s[а-яА-Я]+)|([а-яА-Я]+\s[а-яА-Я]+)|([а-яА-Я]+)", ErrorMessage = "Введите ФИО гостя")]
+            [RegularExpression(@"([а-яА-Я]+\s[а-яА-Я]+\s[а-яА-Я]+)|([а-яА-Я]+\s[а-яА-Я]+)|([а-яА-Я]+)", ErrorMessage = "Введите ФИО гостя полностью и по-русски")]
             [StringLength(35, MinimumLength = 2, ErrorMessage = "Введите ФИО гостя")]
             [Display(Name = "UserName")]
             public string UserName { get; set; }
 
             //№ телефона гостя
             [Required(ErrorMessage = "Введите № телефона")]
-            [RegularExpression(@"(89\d{2}\d{3}\d{2}\d{2})|(\+7.?\(\d{3}\).?\d{2,3}-\d{2,3}-\d{2,3})|(8\(\d{3}\).?\d{2,3}-\d{2,3}-\d{2,3})|(\+79\d{2}\d{3}\d{2}\d{2})", ErrorMessage = "Введите № телефона в виде 89001110011 либо +79001110011")]
+            [RegularExpression(@"(89\d{2}\d{3}\d{2}\d{2})", ErrorMessage = "Введите № телефона в формате 89001110011")]
             [StringLength(18, MinimumLength = 6, ErrorMessage = "Номер должен содержать 6-11 цифр")]
             [DataType(DataType.PhoneNumber)]
             public string phnumber { get; set; }
@@ -437,7 +437,7 @@ namespace Fusion.Models.Callback
             //[Required(ErrorMessage = "Введите email гостя")]
             //a-z{5,20}\@a-z{4,10}\.a-z{2,3}
             [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Введите email-адрес в формате iam@gmail.com")]
-            [StringLength(40, MinimumLength = 0, ErrorMessage = "Введите корректный email-адрес")]
+            [StringLength(40, MinimumLength = 0, ErrorMessage = "Введите email-адрес не должен превышать 40 символов")]
             [DataType(DataType.EmailAddress)]
             public string email { get; set; }
 
@@ -519,7 +519,7 @@ namespace Fusion.Models.Callback
             //}
 
             //дата создания отзыва
-            [Required(ErrorMessage = "Введите дату визита гостя")]
+            [Required(ErrorMessage = "Введите дату появления отзыва")]
             [DataType(DataType.Date)]
             public string NewDate { get; set; }
 
